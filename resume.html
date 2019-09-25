@@ -1,0 +1,383 @@
+<head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+<style>
+    
+
+/* p , h1 , h2 , h3 , h4 , h5 {
+    color: #ffffff;
+}     */
+
+li {
+    list-style: none;
+}
+
+.center {
+    text-align: center;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
+.table-width {
+    width: 10%;
+    margin-left: 45%;
+    margin-right: 45%;
+}
+
+.td-width {
+    width: 50%;
+}
+
+#more {
+ display: none;   
+}
+
+#two {
+    display: none;
+}
+
+.language1 {
+    background-color: rgba(159, 155, 33, 0.09);
+    border: 2px solid #000;
+    overflow: hidden;
+    width: 20%;
+    margin-left: 40%;
+    margin-right: 40%;
+}
+
+body {
+    background-color: antiquewhite;
+}
+
+.f-weight {
+    font-weight: 800;
+}
+
+button {
+    background-color: #000000;
+    color: #ffffff;
+    border: 2px #ffffff solid;
+    width: 100px;
+    height: 30px; 
+     }
+
+.checked {
+  color: orange;
+}     
+
+.rate1 {
+    width: 24%;
+}
+
+.rate2 {
+    width: 79%;
+}
+
+</style>
+
+<div id="app" class="center">
+
+
+    
+  <!-- <ul>
+    <li v-for="(value, propertyName, index) in profile">
+      {{ propertyName }}: {{ value }} 
+    </li>
+  </ul> -->
+  
+        <div>
+            <h1>Resume</h1>
+        </div>
+
+        <div>
+            <!-- <img v-bind:src="'./resume/profile.png'" alt="profile image"> -->
+            <img src="profile.png" width="200" height="200">
+        </div>
+
+        <div>
+            <span class="f-weight"> FullName: </span> {{ profile.firstName }}  {{profile.lastName}}
+        </div>
+        <br/>
+
+        <!-- <div>
+            Date of birth: {{ profile.dob }}
+        </div> -->
+        <br/>
+
+        <div>
+           <span class="f-weight"> Qualification : </span> {{ profile.qualification }}
+        </div>
+
+        <br />
+
+        <h3>Programming Languages: </h3>
+
+        <div class="language1">
+            <li v-for="item in languages">
+
+                <div class="rate1">
+                    {{ item.language }}
+                </div>
+
+                <div class="rate2">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                </div>
+            </li>
+        </div>
+
+        <h3>Hobbies:</h3>  
+        <div class="language1">
+            <li v-for="item in hobbies">
+                {{ item.hobby }}
+            </li>
+        </div>
+
+        <h3>Academics:</h3>
+
+    <!-- <li v-for="(value, propertyName, index) in marksheet">
+            {{ propertyName }}: {{ value }} 
+    </li> -->
+            
+        <li v-for="(value, propertyName, index) in marksheet" class="center" >
+
+            <table class="table-width">
+                <tr>
+                    <td class="td-width">
+                    {{ propertyName }}:
+                    </td>
+                    <td class="td-width"> {{ value }} </td>
+                </tr>    
+            </table>  
+
+        </li>
+
+        <!-- <li v-for="(value, propertyName, index) in projects" >
+            <br/>
+            <div>
+                {{ propertyName }} : 
+            </div>
+            <br/>
+            <div>
+                {{ value }}
+            </div>
+        </li>     -->
+
+
+        <div>
+                <h1> Project 1 </h1>
+            
+                    
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                    Nullam aliquam lectus leo, nec aliquam tellus maximus eget. 
+                    Nullam pellentesque libero a enim interdum tristique. 
+                    Fusce quis<span id="dots">...</span> <span id="more">aliquet augue. Nulla semper rutrum odio. 
+                    Cras condimentum a tortor vel elementum. Nullam varius tellus id lacus porta elementum. 
+                    Proin iaculis augue mi. Ut et magna eget urna congue cursus. Ut ultrices nunc vel nisi sodales finibus. 
+                    Aliquam vel tortor eu ex feugiat scelerisque. Vivamus accumsan egestas gravida. Sed dictum, lorem eget sodales consequat, 
+                    augue dui consequat sem, varius tincidunt libero orci tincidunt sapien. Nulla porttitor orci sed magna ornare cursus ac vel metus. 
+                    Aenean hendrerit felis mauris, at mollis metus commodo ut. Cras nec sem arcu.</span>
+                </p>
+                <button type="button" id="read" onclick="read()">Read More</button>
+            
+            <!-- <button v-on:click="readmore()">
+                Read More...
+            </button> -->
+        
+        
+        </div>
+
+</div>
+
+
+<div id="app2" class="center">
+
+        <p> <h1>Project 2</h1>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Nullam aliquam lectus leo, nec aliquam tellus maximus eget. 
+            Nullam pellentesque libero a enim interdum tristique. 
+            Fusce quis  <span  v-show="isOpen" id="more2">aliquet augue. Nulla semper rutrum odio. 
+                    Cras condimentum a tortor vel elementum. Nullam varius tellus id lacus porta elementum. 
+                    Proin iaculis augue mi. Ut et magna eget urna congue cursus. Ut ultrices nunc vel nisi sodales finibus. 
+                    Aliquam vel tortor eu ex feugiat scelerisque. Vivamus accumsan egestas gravida. Sed dictum, lorem eget sodales consequat, 
+                    augue dui consequat sem, varius tincidunt libero orci tincidunt sapien. Nulla porttitor orci sed magna ornare cursus ac vel metus. 
+                    Aenean hendrerit felis mauris, at mollis metus commodo ut. Cras nec sem arcu.</span></p>
+        <!-- <button v-on:click='isOpen = !isOpen'> Read More</button> -->
+        <button v-on:click="displayit()" id="one">Read More....</button>
+        <button v-on:click="displaynone()" id="two">Read Less....</button>         
+</div>
+
+
+
+      
+
+
+
+
+<script>
+
+    var i = 0;
+    function read(){
+        if(!i){
+            document.getElementById("more").style.display = "inline";
+            document.getElementById("dots").style.display = "none";
+            document.getElementById("read").innerHTML = "Read Less";
+            i = 1;
+        }
+        else {
+            document.getElementById("more").style.display = "none";
+            document.getElementById("dots").style.display = "inline";
+            document.getElementById("read").innerHTML = "Read More"; 
+            i = 0;
+        }
+    }
+
+new Vue({
+	el: '#app',
+  data: {
+		profile: {
+    	firstName: 'Abhishek',
+        lastName: 'Shah',
+        age: 27,
+        dob: '09/01/1992',
+        qualification: 'BE ',
+        i: false
+    },
+    languages: [
+      { language: 'C' },
+      { language: 'C++' },
+      { language: 'Javascript' },
+      { language: 'React.js' },
+      { language: 'Python' },
+      { language: 'Django' },
+  
+    ],
+    hobbies: [
+        {hobby:'Cricket'},
+        {hobby:'Football'}
+    ],
+    marksheet: {
+        '10th': '80%',
+        '12th': '80%',
+        'BE': '62%'
+    },
+    projects: {
+        'project1': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquam lectus leo, nec aliquam tellus maximus eget. Nullam pellentesque libero a enim interdum tristique. Fusce quis aliquet augue. Nulla semper rutrum odio. Cras condimentum a tortor vel elementum. Nullam varius tellus id lacus porta elementum. Proin iaculis augue mi. Ut et magna eget urna congue cursus. Ut ultrices nunc vel nisi sodales finibus. Aliquam vel tortor eu ex feugiat scelerisque. Vivamus accumsan egestas gravida. Sed dictum, lorem eget sodales consequat, augue dui consequat sem, varius tincidunt libero orci tincidunt sapien. Nulla porttitor orci sed magna ornare cursus ac vel metus. Aenean hendrerit felis mauris, at mollis metus commodo ut. Cras nec sem arcu.',
+        'project2': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquam lectus leo, nec aliquam tellus maximus eget. Nullam pellentesque libero a enim interdum tristique. Fusce quis aliquet augue. Nulla semper rutrum odio. Cras condimentum a tortor vel elementum. Nullam varius tellus id lacus porta elementum. Proin iaculis augue mi. Ut et magna eget urna congue cursus. Ut ultrices nunc vel nisi sodales finibus. Aliquam vel tortor eu ex feugiat scelerisque. Vivamus accumsan egestas gravida. Sed dictum, lorem eget sodales consequat, augue dui consequat sem, varius tincidunt libero orci tincidunt sapien. Nulla porttitor orci sed magna ornare cursus ac vel metus. Aenean hendrerit felis mauris, at mollis metus commodo ut. Cras nec sem arcu.',
+        'project3': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquam lectus leo, nec aliquam tellus maximus eget. Nullam pellentesque libero a enim interdum tristique. Fusce quis aliquet augue. Nulla semper rutrum odio. Cras condimentum a tortor vel elementum. Nullam varius tellus id lacus porta elementum. Proin iaculis augue mi. Ut et magna eget urna congue cursus. Ut ultrices nunc vel nisi sodales finibus. Aliquam vel tortor eu ex feugiat scelerisque. Vivamus accumsan egestas gravida. Sed dictum, lorem eget sodales consequat, augue dui consequat sem, varius tincidunt libero orci tincidunt sapien. Nulla porttitor orci sed magna ornare cursus ac vel metus. Aenean hendrerit felis mauris, at mollis metus commodo ut. Cras nec sem arcu.'
+    },
+    methods: {
+        readmore : function(){
+            document.getElementById("more").style.display = "none";
+            document.getElementById("dots").style.display = "none";
+            document.getElementById("read").innerHTML = "none"; 
+        }
+    }
+
+  }
+});
+
+
+new Vue({
+    el: '#app2',
+    data: {
+        isOpen: false
+    },
+    methods: {
+        displaynone: function(){
+            document.getElementById("one").style.display = "inline";
+            document.getElementById("two").style.display = "none";
+            document.getElementById("more2").style.display = "none";
+        },
+        displayit: function(){
+            document.getElementById("two").style.display = "inline";
+            document.getElementById("one").style.display = "none";
+            document.getElementById("more2").style.display = "inline";
+        }
+    }
+});
+
+
+Vue.component('star-rating', {
+
+props: {
+  'name': String,
+  'value': null,
+  'id': String,
+  'disabled': Boolean,
+  'required': Boolean
+},
+
+template: '<div class="star-rating">\
+      <label class="star-rating__star" v-for="rating in ratings" \
+      :class="{\'is-selected\': ((value >= rating) && value != null), \'is-disabled\': disabled}" \
+      v-on:click="set(rating)" v-on:mouseover="star_over(rating)" v-on:mouseout="star_out">\
+      <input class="star-rating star-rating__checkbox" type="radio" :value="rating" :name="name" \
+      v-model="value" :disabled="disabled">★</label></div>',
+
+/*
+ * Initial state of the component's data.
+ */
+data: function() {
+  return {
+    temp_value: null,
+    ratings: [1, 2, 3, 4, 5]
+  };
+},
+
+methods: {
+  /*
+   * Behaviour of the stars on mouseover.
+   */
+  star_over: function(index) {
+    var self = this;
+
+    if (!this.disabled) {
+      this.temp_value = this.value;
+      return this.value = index;
+    }
+
+  },
+
+  /*
+   * Behaviour of the stars on mouseout.
+   */
+  star_out: function() {
+    var self = this;
+
+    if (!this.disabled) {
+      return this.value = this.temp_value;
+    }
+  },
+
+  /*
+   * Set the rating.
+   */
+  set: function(value) {
+    var self = this;
+
+    if (!this.disabled) {
+      this.temp_value = value;
+      return this.value = value;
+    }
+  }
+}
+});
+
+new Vue({
+el: '#app3'
+});
+
+</script>
+
+
+
